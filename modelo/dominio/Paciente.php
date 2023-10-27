@@ -6,16 +6,16 @@ class Paciente{
     public function setNome($Nome){
         $this->Nome = $Nome;
     }
-    public function getNomeDoRequisitante(){
-        return $this->NomeDoRequisitante;
+    public function getNome(){
+        return $this->Nome;
     }
-    private $dataNasc;
+    private $nascimento;
 
-    public function setdataNasc($dataNasc){
-        $this->dataNasc = $dataNasc;
+    public function setnascimento($nascimento){
+        $this->nascimento = $nascimento;
     }    
-    public function getdataNasc(){
-        return $this->dataNasc;
+    public function getnascimento(){
+        return $this->nascimento;
     }    
     private $sexo;
 

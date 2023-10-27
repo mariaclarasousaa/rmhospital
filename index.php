@@ -20,7 +20,7 @@
             <a class="nav-link active" aria-current="page" href="#">MEDCARE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?page=pacienteForm">Cadastro</a>
+            <a class="nav-link" href="?page=pacienteControle">Cadastro</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Menu</a>
@@ -42,7 +42,7 @@
     <div class="container">
 <?php
 if(!empty($_GET['page']))
-include "pages/".$_GET['page'].".php";
+include "controle/".$_GET['page'].".php";
 ?>
 </div>
 <div class="container">
