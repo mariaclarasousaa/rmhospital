@@ -9,7 +9,7 @@ class PacienteDao
 
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "mydb";
 
         $nome = $paciente->getNome();
@@ -20,7 +20,7 @@ class PacienteDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO pessoa(nome,nascimento, sexo, nomeDoRequisitante, rg, cpf) VALUES (:nome, :nascimento, :sexo, :nomeDoRequisitante, :rg, :cpf)');
+        $query = $conexao->prepare('INSERT INTO paciente(nome,nascimento, sexo, rg, cpf) VALUES (:nome, :nascimento, :sexo, :rg, :cpf)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':nascimento', $nascimento);
         $query->bindParam(':sexo', $sexo);
