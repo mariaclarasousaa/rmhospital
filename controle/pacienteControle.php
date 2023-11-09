@@ -19,8 +19,10 @@ if ($acao == NULL) {
 
     $pacienteDao->salvar($paciente);
 
+    header("Location: ?page=pacienteControle&acao=listar");
 } else if ($acao == "listar") {
-    echo "listando...";
+    $pacientes = $pacienteDao->listar();
+    include 'pages/listarPaciente.php';
 } else if ($acao == "alterar") {
     echo "alterando...";
 } else if ($acao == "excluir") {

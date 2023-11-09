@@ -40,6 +40,19 @@ class PacienteDao
 
     public function listar()
     {
+            $host = "localhost";
+            $usuario = "root";
+            $senha = "aluno";
+            $bd = "mydb";
+    
+            $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+    
+            $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg, cpf FROM paciente');
+            $query->execute();
+            $paciente = $query->fetchAll(PDO::FETCH_CLASS);
+    
+            return $paciente;
+    
     }
 
     public function deletar($id)
