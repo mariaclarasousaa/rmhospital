@@ -22,10 +22,9 @@
         <th>RG</th>
         <th>CPF</th>    
         <th>TELEFONE</th>
-        <th>MUNICIPIO</th>
-        <th>ESTADO CIVIL</th>                        
-        <th class="text-center">Editar</th>
-        <th class="text-center">Excluir</th>
+        <th>BAIRRO</th>                      
+        <th class="text-center">EDITAR</th>
+        <th class="text-center">EXCLUIR</th>
     </tr>
 
     <?php foreach ($pacientes as $paciente) { ?>
@@ -36,8 +35,7 @@
             <td><?php echo $paciente->rg; ?></td>
             <td><?php echo $paciente->cpf; ?></td>
             <td><?php echo $paciente->telefone; ?></td>
-            <td><?php echo $paciente->municipio; ?></td>
-            <td><?php echo $paciente->estadoCivil; ?></td>
+            <td><?php echo $paciente->bairro; ?></td>
             <td class="text-center">
             <a href="?page=pacienteControle&acao=get&cpf=<?php echo $paciente->cpf; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>

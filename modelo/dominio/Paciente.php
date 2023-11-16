@@ -49,20 +49,12 @@ class Paciente{
     public function gettelefone(){
         return $this->telefone;
     }
-    private $municipio;
+    private $bairro;
 
-    public function setmunicipio($municipio){
-        $this->municipio = $municipio;
+    public function setbairro($bairro){
+        $this->bairro = $bairro;
     }
-    public function getmunicipio(){
-        return $this->municipio;
-    }
-    private $estadoCivil;
-
-    public function setestadoCivil($estadoCivil){
-        $this->estadoCivil = $estadoCivil;
-    }
-    public function getestadoCivil(){
-        return $this->estadoCivil;
+    public function getbairro(){
+        return $this->bairro;
     }
 }

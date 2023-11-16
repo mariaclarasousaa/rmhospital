@@ -14,12 +14,23 @@ class PacienteDao
 
         $nome = $paciente->getNome();
         $nascimento = $paciente->getNascimento();
+        $bairro = $paciente->getBairro();
+        $sexo = $paciente->getSexo();
+        $rg = $paciente->getRg();
+        $cpf = $paciente->getCpf();
+        $telefone = $paciente->getTelefone();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO pessoa(nome,nascimento) VALUES (:nome, :nascimento)');
+        $query = $conexao->prepare('INSERT INTO paciente(nome,nascimento, bairro, sexo, rg, cpf, telefone) VALUES (:nome, :nascimento, :bairro, :sexo, :rg, :cpf, :telefone)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':nascimento', $nascimento);
+        $query->bindParam(':bairro', $bairro);
+        $query->bindParam(':sexo', $sexo);
+        $query->bindParam(':rg', $rg);
+        $query->bindParam(':cpf', $cpf);
+        $query->bindParam(':telefone', $telefone);
+    
 
         $query->execute();
 
@@ -41,7 +52,7 @@ class PacienteDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, municipio, estadoCivil FROM paciente');
+        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, sexo, rg FROM paciente');
         $query->execute();
         $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -90,7 +101,7 @@ class PacienteDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, municipio, estadoCivil  FROM paciente WHERE cpf=:cpf');
+        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, rg, sexo FROM paciente WHERE cpf=:cpf');
         $query->bindParam(':cpf',$cpf);
         $query->execute();
         $pacientes = $query->fetchAll(PDO::FETCH_CLASS);

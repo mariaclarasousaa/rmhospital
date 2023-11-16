@@ -13,6 +13,11 @@ if ($acao == NULL) {
     $paciente = new Paciente();
     $paciente->setNome($_POST['nome']);
     $paciente->setNascimento($_POST['nascimento']);
+    $paciente->setRg($_POST['rg']);
+    $paciente->setSexo($_POST['sexo']);
+    $paciente->setBairro($_POST['bairro']);
+    $paciente->setTelefone($_POST['telefone']);
+    $paciente->setCpf($_POST['cpf']);
     $pacienteDao->salvar($paciente);
 
     header("Location: ?page=pacienteControle&acao=listar");
@@ -24,6 +29,11 @@ if ($acao == NULL) {
     $paciente = new Paciente();
     $paciente->setCpf($_POST['cpf']);
     $paciente->setNome($_POST['nome']);
+    $paciente->setNascimento($_POST['nascimento']);
+    $paciente->setRg($_POST['rg']);
+    $paciente->setSexo($_POST['sexo']);
+    $paciente->setBairro($_POST['bairro']);
+    $paciente->setTelefone($_POST['telefone']);
     $pacienteDao->atualizar($paciente);
 
     header("Location: ?page=pacienteControle&acao=listar");
