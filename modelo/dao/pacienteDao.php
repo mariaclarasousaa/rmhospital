@@ -14,18 +14,12 @@ class PacienteDao
 
         $nome = $paciente->getNome();
         $nascimento = $paciente->getNascimento();
-        $sexo = $paciente->getSexo();
-        $rg = $paciente->getRg();
-        $cpf = $paciente->getCpf();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO paciente(nome,nascimento, sexo, rg, cpf) VALUES (:nome, :nascimento, :sexo, :rg, :cpf)');
+        $query = $conexao->prepare('INSERT INTO pessoa(nome,nascimento) VALUES (:nome, :nascimento)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':nascimento', $nascimento);
-        $query->bindParam(':sexo', $sexo);
-        $query->bindParam(':rg', $rg);
-        $query->bindParam(':cpf', $cpf);
 
         $query->execute();
 
@@ -40,26 +34,67 @@ class PacienteDao
 
     public function listar()
     {
-            $host = "localhost";
-            $usuario = "root";
-            $senha = "aluno";
-            $bd = "mydb";
-    
-            $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-    
-            $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg, cpf FROM paciente');
-            $query->execute();
-            $paciente = $query->fetchAll(PDO::FETCH_CLASS);
-    
-            return $paciente;
-    
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, municipio, estadoCivil FROM paciente');
+        $query->execute();
+        $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $pacientes;
+
     }
 
-    public function deletar($id)
+    public function deletar($cpf)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
+        $query = $conexao->prepare('delete from paciente where cpf=:cpf');
+        $query->bindParam(':cpf', $cpf);
+        $query->execute();
     }
 
     public function atualizar($paciente)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $nome = $paciente->getNome();
+        $cpf = $paciente->getCpf();
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $query = $conexao->prepare('update paciente set nome=:nome where cpf=:cpf');
+        $query->bindParam(':nome', $nome);
+        $query->bindParam(':cpf', $cpf);
+        $query->execute();
+        
+    }
+
+    public function get($cpf)
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, municipio, estadoCivil  FROM paciente WHERE cpf=:cpf');
+        $query->bindParam(':cpf',$cpf);
+        $query->execute();
+        $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $pacientes[0];
     }
 }

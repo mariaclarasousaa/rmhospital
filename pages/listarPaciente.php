@@ -3,7 +3,7 @@
 <hr />
 <div class="row" style="padding:15px;">
     <div class="col-5">
-        <a class="btn btn-info" href="?page=pacienteControle"> <i class="bi bi-file"></i><br /> NOVO</a>
+        <a class="btn btn-info" href="?page=pacienteControle"> <i class="bi bi-file"></i><br /> Novo</a>
     </div>
     <div class="col-7">
         <form class="d-flex" role="search">            
@@ -20,8 +20,10 @@
         <th>NASCIMENTO</th>
         <th>SEXO</th>
         <th>RG</th>
-        <th>CPF</th>
-
+        <th>CPF</th>    
+        <th>TELEFONE</th>
+        <th>MUNICIPIO</th>
+        <th>ESTADO CIVIL</th>                        
         <th class="text-center">Editar</th>
         <th class="text-center">Excluir</th>
     </tr>
@@ -33,13 +35,16 @@
             <td><?php echo $paciente->sexo; ?></td>
             <td><?php echo $paciente->rg; ?></td>
             <td><?php echo $paciente->cpf; ?></td>
+            <td><?php echo $paciente->telefone; ?></td>
+            <td><?php echo $paciente->municipio; ?></td>
+            <td><?php echo $paciente->estadoCivil; ?></td>
             <td class="text-center">
-                <a href="#" class="btn btn-warning">
+            <a href="?page=pacienteControle&acao=get&cpf=<?php echo $paciente->cpf; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>
                 </a>
             </td>
             <td class="text-center">
-                <a href="#" class="btn btn-danger">
+            <a href="?page=pacienteControle&acao=excluir&cpf=<?php echo $paciente->cpf; ?>" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
             </td>

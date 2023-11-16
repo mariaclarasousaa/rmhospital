@@ -40,12 +40,16 @@
     </div>
   </nav>
   <br>
-    <div class="container">
-<?php
-if(!empty($_GET['page']))
-include "controle/".$_GET['page'].".php";
-?>
-</div>
+  <div class="container">
+        <?php
+        if (!empty($_GET['page'])) {
+            $controle = $_GET['page']; //pacienteControle
+
+            include 'controle/' . $controle . '.php';
+        }
+        ?>
+
+    </div>
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Company, Inc</p>

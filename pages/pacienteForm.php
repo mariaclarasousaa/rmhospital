@@ -1,5 +1,17 @@
-<h1 class="h3 mb-3 fw-normal"> Cadastro Paciente</h1>
-    <form method="post" action="?page=pacienteControle">
+<h1 class="h3 mb-3 fw-normal">Cadastro de paciente</h1>
+<form method="post" action="?page=pacienteControle">
+<?php if(isset($paciente)){
+       ?>
+       <input type="hidden" name="cpf" value="<?php echo $paciente->cpf; ?>"/>
+       <?php
+       $nome = $paciente->nome;
+       $acao = "alterar"; 
+    }else{
+        $nome='';
+        $acao = "salvar";
+    }
+    ?>    
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nome</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="nome" >

@@ -41,4 +41,28 @@ class Paciente{
     public function getcpf(){
         return $this->cpf;
     }
+    private $telefone;
+
+    public function settelefone($telefone){
+        $this->telefone = $telefone;
+    }
+    public function gettelefone(){
+        return $this->telefone;
+    }
+    private $municipio;
+
+    public function setmunicipio($municipio){
+        $this->municipio = $municipio;
+    }
+    public function getmunicipio(){
+        return $this->municipio;
+    }
+    private $estadoCivil;
+
+    public function setestadoCivil($estadoCivil){
+        $this->estadoCivil = $estadoCivil;
+    }
+    public function getestadoCivil(){
+        return $this->estadoCivil;
+    }
 }
