@@ -47,4 +47,13 @@ if ($acao == NULL) {
 
    $paciente = $pacienteDao->get($cpf);
     include 'pages/pacienteForm.php';
+
+}else if($acao == "buscar"){
+    
+    $filtro = $_POST['filtro'];
+    $pacientes = $pacienteDao->buscar($filtro);
+
+    include 'pages/listarPaciente.php';
+
 }
+

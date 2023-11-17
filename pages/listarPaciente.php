@@ -6,9 +6,9 @@
         <a class="btn btn-info" href="?page=pacienteControle"> <i class="bi bi-file"></i><br /> Novo</a>
     </div>
     <div class="col-7">
-        <form class="d-flex" role="search">            
-            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do aluno" aria-label="Search">
-            <button class="btn btn-info" type="submit"><i class="bi bi-search"></i> Buscar</button>
+    <form class="d-flex" role="search" method="post" action="?page=pacienteControle">            
+            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do paciente" aria-label="Search" name="filtro">
+            <button value="buscar" name="acao" class="btn btn-info" type="submit"><i class="bi bi-search"></i> Buscar</button>
         </form>
     </div>
 </div>
@@ -22,7 +22,7 @@
         <th>RG</th>
         <th>CPF</th>    
         <th>TELEFONE</th>
-        <th>BAIRRO</th>                      
+        <th>BAIRRO</th>                  
         <th class="text-center">EDITAR</th>
         <th class="text-center">EXCLUIR</th>
     </tr>

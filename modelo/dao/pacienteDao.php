@@ -108,4 +108,21 @@ class PacienteDao
 
         return $pacientes[0];
     }
+    public function buscar($filtro){
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $filtro = "%".$filtro."%";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, rg, sexo FROM paciente WHERE nome like :filtro');
+        $query->bindParam(':filtro',$filtro);
+        $query->execute();
+        $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $pacientes;
+    }
 }

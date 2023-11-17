@@ -11,7 +11,6 @@
        $rg = $paciente->rg;
        $cpf = $paciente->cpf;
        $telefone = $paciente->telefone;
-       $email = $paciente->email;
 
        $acao = "alterar"; 
     }else{
@@ -22,7 +21,6 @@
         $rg='';
         $cpf='';
         $telefone='';
-        $email='';
         $acao = "salvar";
     }
     ?>    
@@ -30,11 +28,6 @@
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nome</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="nome" value="<?php echo $nome; ?>">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $email; ?>">
-    <div id="emailHelp" class="form-text">Não mostraremos seu email para outra pessoa</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nascimento</label>
@@ -48,10 +41,17 @@
     <label for="exampleInputEmail1" class="form-label">Cpf</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"value="<?php echo $cpf; ?>">
   </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Sexo</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="sexo"value="<?php echo $sexo; ?>">
-  </div>
+  <div class="row mb-3">
+        <label for="sexo" class="col-sm-2 col-form-label">Sexo</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="sexo">
+                <option value="">Selecione</option>
+                <option value="f">Feminino</option>
+                <option value="m">Masculino</option>
+                <option value="m">Prefiro não informar</option>
+            </select>
+        </div>
+    </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Telefone</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="telefone"value="<?php echo $telefone; ?>">
