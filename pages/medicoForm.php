@@ -1,42 +1,53 @@
-<h1 class="h3 mb-3 fw-normal"> Cadastro Médico</h1>
-    <form>
+<h1 class="h3 mb-3 fw-normal">Cadastro de medico</h1>
+<form method="post" action="?page=medicoControle">
+<?php if(isset($medico)){
+       ?>
+       <input type="hidden" name="cpf" value="<?php echo $medico->cpf; ?>"/>
+       <?php
+       $nome = $medico->nome;
+       $rg = $medico->rg;
+       $cpf = $medico->cpf;
+       $crm = $medico->crm;
+       $endereco = $medico->endereco;
+       $telefone = $medico->telefone;
+
+       $acao = "alterar"; 
+
+    }else{
+        $nome='';
+        $rg='';
+        $crm='';
+        $cpf='';
+        $endereco='';
+        $telefone='';
+        $acao = "salvar";
+    }
+    ?>    
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nome</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="nome" value="<?php echo $nome; ?>">
+  </div> 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Rg</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="rg"value="<?php echo $rg; ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">Não mostraremos seu email para outra pessoa</div>
+    <label for="exampleInputEmail1" class="form-label">Cpf</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="cpf"value="<?php echo $cpf; ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Sexo</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Estado civil</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">CPF</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="form-label">CRM</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="crm" value="<?php echo $crm; ?>">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Telefone</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="telefone"value="<?php echo $telefone; ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Municipio</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="form-label">Endereco</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="endereco"value="<?php echo $endereco; ?>">
   </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Estado civil</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
-  <label for="inputPassword5" class="form-label">Senha</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<div id="passwordHelpBlock" class="form-text">
-  Sua senha deve possuir 8-20 caracteres, contendo letras, numeros e simbolos.
-</div><br>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+<button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn btn-primary">Salvar</button>
+</form>
 </form>

@@ -3,18 +3,12 @@
 class Medico{
 
     private $nome;
-    private $idade;
-    private $sexo;
-    private $foto;
     private $telefone;
-    private $curriculo;
     private $rg;
     private $cpf;
-    private $diplomamedico;
+    private $endereco;
     private $crm;
-    private $tituloEspecializacao;
-    private $carteiraVacinacao;
-    private $cartadeApresentacao;
+
     
 
     public function setnome($nome){
@@ -82,48 +76,21 @@ class Medico{
     }
     public function getcpf(){
         return $this->cpf;
-    }    
+    }       
 
 
-    
-    public function setdiplomamedico($diplomamedico){
-        $this->diplomamedico = $diplomamedico;
+    public function setendereco($endereco){
+        $this->endereco = $endereco;
     }
-    public function getdiplomamedico(){
-        return $this->diplomamedico;
-    }    
+    public function getendereco(){
+        return $this->endereco;
+    } 
 
-    
+
     public function setcrm($crm){
         $this->crm = $crm;
     }
     public function getcrm(){
         return $this->crm;
-    }    
-
-
-    
-    public function settituloEspecializacao($tituloEspecializacao){
-        $this->tituloEspecializacao = $tituloEspecializacao;
     }
-    public function gettituloEspecializacao(){
-        return $this->tituloEspecializacao;
-    }    
-
-
-    public function setcarteiraVacinacao($carteiraVacinacao){
-        $this->carteiraVacinacao = $carteiraVacinacao;
-    }
-    public function getcarteiraVacinacao(){
-        return $this->carteiraVacinacao;
-    }    
-
-
-    
-    public function setcartadeApresentacao($cartadeApresentacao){
-        $this->cartadeApresentacao = $cartadeApresentacao;
-    }
-    public function getcartadeApresentacao(){
-        return $this->cartadeApresentacao;
-    }    
 }
