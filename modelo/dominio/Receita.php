@@ -1,49 +1,45 @@
 <?php
 
 class Receita{
-    private $Nome;
-    private $dataNasc;
-    private $medicamento;
-    private $especialidade;
-    private $assinaturadoRequisitante;
+    private $Id_receita;
 
-    
-    public function setNome($Nome){
-        $this->Nome = $Nome;
+    public function setId_receita($Id_receita){
+        $this->Id_receita = $Id_receita;
     }
-    public function getNomeDoRequisitante(){
-        return $this->NomeDoRequisitante;
+    public function getId_receita(){
+        return $this->Id_receita;
     }
+    private $Data;
 
-
-    public function setdataEmissao($dataEmissao){
-        $this->dataEmissao = $dataEmissao;
+    public function setdata($data){
+        $this->data = $data;
     }    
-    public function getdataEmissao(){
-        return $this->dataEmissao;
+    public function getdata(){
+        return $this->data;
     }    
+    private $descricao;
 
+    public function setdescricao($descricao){
+        $this->descricao = $descricao;
+    }
+    public function getdescricao(){
+        return $this->descricao;
+    }
+    private $id_medico;
 
-    public function setespecialidade($especialidade){
-        $this->especialidade = $especialidade;
+    public function setid_medico($id_medico){
+        $this->id_medico = $id_medico;
     }
-    public function getespecialidade(){
-        return $this->especialidade;
+    public function getid_medico(){
+        return $this->id_medico;
+    }
+    private $id_paciente;
+
+    public function setid_paciente($id_paciente){
+        $this->id_paciente = $id_paciente;
+    }
+    public function getid_paciente(){
+        return $this->id_paciente;
     }
 
-
-    public function setassinaturadoRequisitante($assinaturadoRequisitante){
-        $this->assinaturadoRequisitante = $assinaturadoRequisitante;
-    }
-    public function getassinaturadoRequisitante(){
-        return $this->assinaturadoRequisitante;
-    }
-    
-
-    public function setmedicamento($medicamento){
-        $this->medicamento = $medicamento;
-    }
-    public function getmedicamento(){
-        return $this->medicamento;
-    }
 }
