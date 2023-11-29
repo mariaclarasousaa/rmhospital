@@ -7,10 +7,9 @@ class MedicoDao
     {
         //  try {
 
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+        require_once "modelo/dao/configConexao.php";
+
+        $configConexao = new configConexao();
 
         $nome = $medico->getNome();
         $rg = $medico->getRg();
@@ -20,7 +19,7 @@ class MedicoDao
         $crm = $medico->getCrm();
         $medico = new Medico();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexao = $configConexao->conexao;
 
         $query = $conexao->prepare('INSERT INTO medico(nome, rg, cpf, endereco, telefone, crm) VALUES (:nome, :rg, :cpf, :endereco, :telefone, :crm)');
         $query->bindParam(':nome', $nome);
