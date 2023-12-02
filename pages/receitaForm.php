@@ -1,6 +1,6 @@
-<div class="form-container">
+
 <h1 class="h3 mb-3 fw-normal form-title-color">Receita</h1> 
-  <form method="post" action="?page=medicoControle">
+  <form method="post" action="?page=receitaControle">
 
 <?php if(isset($receita)){
        ?>
@@ -27,29 +27,32 @@
   
 <style>
     body {
-      background-color: #fff7e5; /* Cor de fundo para todo o corpo */
+      background-color: #DCDCDC; /* Cor de fundo do site */
     }
 
     .form-container {
-      background-color: #9400D3; /* Cor de fundo para o formulário */
-      padding: 20px; /* Espaçamento interno para o conteúdo do formulário */
+      background-color: 	#778899; /* Cor de fundo para o formulário */
+      padding: 30px; /* Espaçamento interno para o conteúdo do formulário */
       margin-top: 20px; /* Espaçamento superior */
-      border-radius: 10px; /* Borda arredondada para uma aparência mais suave */
+      border-radius: 15px; /* Borda arredondada para uma aparência mais suave */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para elevação */
     }
     
     /* Adicione esta classe para mudar a cor do texto do formulário */
     .form-text-color {
-      color: #000000; /* Cor preta para o texto do formulário */
+      color: #000000; /* Cor preta para o texto do formulário (nome, rg...) */
     }
     /* Mudar a cor do nome do formulário */
     .form-title-color {
-      color: #32CD32; /* Cor para o nome do formulário */
+      color: #000000; /* Cor para o nome do formulário (cadastro) */
     }
 
   </style>
 
+
+<div class="form-container">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Id_receita</label>
+    <label for="exampleInputEmail1" class="form-label">Id Receita</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="id_receita" value="<?php echo $id_receita; ?>">
   </div>
   <div class="mb-3">
@@ -61,23 +64,23 @@
     <input type="text" class="form-control" id="exampleInputEmail1" name="descricao"value="<?php echo $descricao; ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Id_medico</label>
+    <label for="exampleInputEmail1" class="form-label">Id Médico</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="id_medico"value="<?php echo $id_medico; ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Id_paciente</label>
+    <label for="exampleInputEmail1" class="form-label">Id Paciente</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="id_paciente"value="<?php echo $id_paciente; ?>">
   </div>
 
+
   <style>
   .custom-btn-salvar {
-    background-color: #487aa1; /* Cor verde, você pode substituir pelo código de cor desejado */
-    color: #000000; /* Cor do texto no botão, escolha uma que seja legível na cor de fundo */
+    background-color:	#B0C4DE; /* Cor do botao salvar */
+    color: #000000; /* Cor do texto no botão salvar */
   }
 </style>
 
 <button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn custom-btn-salvar">Salvar</button>
-
 
 </form>
 </form>

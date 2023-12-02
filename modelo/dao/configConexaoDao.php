@@ -1,6 +1,6 @@
 <?php 
 
-class ConfigConexao {
+class ConfigConexaoDao {
 
     private $host = "localhost";
     private $usuario = "root";
@@ -10,7 +10,7 @@ class ConfigConexao {
     public $conexao;
 
     public function __construct() {
-        $this->conexao = new mysqli($this->localhost, $this->root, $this->aluno, $this->mybd);
+        $this->conexao = new mysqli($this->host, $this->usuario, $this->senha, $this->bd);
 
         if ($this->conexao->connect_error) {
             die("Erro na conexão com o banco de dados: " . $this->conexao->connect_error);

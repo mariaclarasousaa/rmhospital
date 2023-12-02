@@ -1,33 +1,24 @@
 <?php
 
-class MedicoDao
-{
-
-    public function salvar($medico)
-    {
-        //  try {
-
-        require_once "modelo/dao/configConexao.php";
-
-        $configConexao = new configConexao();
-
+        require_once 'modelo/dao/configConexaoDao.php';
+        
+        class MedicoDao extends configConexaoDao
+        {
+        
+            public function salvar($medico)
+            {
+                //  try {
+        
+               
         $nome = $medico->getNome();
-        $rg = $medico->getRg();
         $cpf = $medico->getCpf();
-        $endereco = $medico->getEndereco();
         $telefone = $medico->getTelefone();
-        $crm = $medico->getCrm();
-        $medico = new Medico();
+ 
 
-        $conexao = $configConexao->conexao;
-
-        $query = $conexao->prepare('INSERT INTO medico(nome, rg, cpf, endereco, telefone, crm) VALUES (:nome, :rg, :cpf, :endereco, :telefone, :crm)');
+        $query = $this->conexao->prepare('INSERT INTO pessoa(cpf, nome, telefone) VALUES (:nome, :cpf, :telefone)');
         $query->bindParam(':nome', $nome);
-        $query->bindParam(':endereco', $endereco);
-        $query->bindParam(':rg', $rg);
         $query->bindParam(':cpf', $cpf);
         $query->bindParam(':telefone', $telefone);
-        $query->bindParam(':crm', $crm);
         
         $query->execute();
         
@@ -43,16 +34,10 @@ class MedicoDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT nome, rg, cpf, endereco, telefone, crm FROM medico');
+       
+        $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco, crm FROM pessoa');
         $query->execute();
-        $medicos = $query->fetchAll(PDO::FETCH_CLASS);
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $medicos;
 
@@ -60,63 +45,47 @@ class MedicoDao
 
     public function deletar($cpf)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        
-        $query = $conexao->prepare('delete from medico where cpf=:cpf');
+      
+        $query = $this->conexao->prepare('delete from pessoa where cpf=:cpf');
         $query->bindParam(':cpf', $cpf);
         $query->execute();
     }
 
+
     public function atualizar($medico)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
+       
         $nome = $medico->getNome();
         $cpf = $medico->getCpf();
+        $rg = $medico->getRg();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update medico set nome=:nome where cpf=:cpf');
+        
+        $query = $this->conexao->prepare('update pessoa set nome=:nome, cpf=:cpf, rg=:rg where cpf=:cpf');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':cpf', $cpf);
+        $query->bindParam(':rg', $rg);
         $query->execute();
         
     }
 
     public function get($cpf)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT nome, rg, cpf, endereco, telefone, crm FROM medico WHERE cpf=:cpf');
+       
+        $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco, crm  FROM pessoa WHERE cpf=:cpf');
         $query->bindParam(':cpf',$cpf);
         $query->execute();
-        $medicos = $query->fetchAll(PDO::FETCH_CLASS);
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $medicos[0];
-    }
-    public function buscar($filtro){
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
 
+    }
+
+    
+    public function buscar($filtro){
+       
         $filtro = "%".$filtro."%";
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT nome, rg, cpf, endereco, telefone, crm FROM medico WHERE nome like :filtro');
+        $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco, crm FROM pessoa WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $medicos = $query->fetchAll(PDO::FETCH_CLASS);

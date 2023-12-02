@@ -11,7 +11,7 @@
 
 
  
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#487aa1;" aria-label="Tenth navbar example">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #487aa1;" aria-label="Tenth navbar example">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
               <li><a class="dropdown-item" href="?page=medicoControle">Cadastro de Médico</a></li>
               <li><a class="dropdown-item" href="#">Ficha de Internação</a></li>
               <li><a class="dropdown-item" href="#">Login</a></li>
-              <li><a class="dropdown-item" href="?page=receitaControle">Receitas</a></li>
+              <li><a class="dropdown-item" href="?page=receitaControle">Receita</a></li>
             </ul>
           </li>
         </ul>
@@ -43,6 +43,7 @@
     </div>
   </nav>
   <br>
+
   <div class="container">
         <?php
         if (!empty($_GET['page'])) {
@@ -53,6 +54,7 @@
         ?>
 
     </div>
+
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Company, Inc</p>
@@ -79,7 +81,6 @@
       <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       </a>
-      <p class="text-body-secondary">&copy; 2023</p>
     </div>
 
 
