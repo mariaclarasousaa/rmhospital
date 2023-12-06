@@ -31,7 +31,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="?page=pacienteForm">Cadastro de Paciente</a></li>
+              <li><a class="dropdown-item" href="?page=pacienteControle">Cadastro de Paciente</a></li>
               <li><a class="dropdown-item" href="?page=medicoControle">Cadastro de Médico</a></li>
               <li><a class="dropdown-item" href="#">Ficha de Internação</a></li>
               <li><a class="dropdown-item" href="#">Login</a></li>

@@ -1,38 +1,37 @@
 <?php
 
-class PacienteDao
-{
+        require_once 'modelo/dao/configConexaoDao.php';
+        require_once 'modelo/dominio/paciente.php';
+        require_once 'modelo/dao/pacienteDao.php';
 
-    public function salvar($paciente)
-    {
-        //  try {
-
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
+        class PacienteDao extends configConexaoDao
+        {
+        
+            public function salvar($paciente)
+            {
+                //  try {
+        
+               
         $nome = $paciente->getNome();
-        $nascimento = $paciente->getNascimento();
-        $bairro = $paciente->getBairro();
-        $sexo = $paciente->getSexo();
-        $rg = $paciente->getRg();
         $cpf = $paciente->getCpf();
         $telefone = $paciente->getTelefone();
+        $rg = $paciente->getRg();
+        $bairro = $paciente->getBairro();
+        $nascimento = $paciente->getNascimento();
+        $sexo = $paciente->getSexo();
+ 
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('INSERT INTO paciente(nome,nascimento, bairro, sexo, rg, cpf, telefone) VALUES (:nome, :nascimento, :bairro, :sexo, :rg, :cpf, :telefone)');
+        $query = $this->conexao->prepare('INSERT INTO pessoa(nome, nascimento, bairro, sexo, rg, cpf, telefone) VALUES (:nome, :cpf, :telefone, :rg, :nascimento, :bairro, :sexo)');
         $query->bindParam(':nome', $nome);
-        $query->bindParam(':nascimento', $nascimento);
-        $query->bindParam(':bairro', $bairro);
-        $query->bindParam(':sexo', $sexo);
-        $query->bindParam(':rg', $rg);
         $query->bindParam(':cpf', $cpf);
         $query->bindParam(':telefone', $telefone);
-    
-
+        $query->bindParam(':sexo', $sexo);
+        $query->bindParam(':rg', $rg);
+        $query->bindParam(':bairro', $bairro);
+        $query->bindParam(':nascimento', $nascimento);
+        
         $query->execute();
+        
 
         //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //  $conexao->exec('SET NAMES "utf8"');
@@ -45,16 +44,10 @@ class PacienteDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, sexo, rg FROM paciente');
+       
+        $query = $this->conexao->prepare('SELECT nome, nascimento, bairro, sexo, rg, cpf, telefone FROM pessoa');
         $query->execute();
-        $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $pacientes;
 
@@ -62,63 +55,55 @@ class PacienteDao
 
     public function deletar($cpf)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        
-        $query = $conexao->prepare('delete from paciente where cpf=:cpf');
+      
+        $query = $this->conexao->prepare('delete from pessoa where cpf=:cpf');
         $query->bindParam(':cpf', $cpf);
         $query->execute();
     }
 
+
     public function atualizar($paciente)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
+       
         $nome = $paciente->getNome();
         $cpf = $paciente->getCpf();
+        $telefone = $paciente->getTelefone();
+        $rg = $paciente->getRg();
+        $bairro = $paciente->getBairro();
+        $nascimento = $paciente->getNascimento();
+        $sexo = $paciente->getSexo();
+ 
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update paciente set nome=:nome where cpf=:cpf');
+        $query = $this->conexao->prepare('update pessoa set nome=:nome, cpf=:cpf, rg=:rg, telefone=:telefone, sexo=:sexo, bairro=:bairro, nascimento=:nascimento where cpf=:cpf');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':cpf', $cpf);
+        $query->bindParam(':telefone', $telefone);
+        $query->bindParam(':sexo', $sexo);
+        $query->bindParam(':rg', $rg);
+        $query->bindParam(':bairro', $bairro);
+        $query->bindParam(':nascimento', $nascimento);
         $query->execute();
         
     }
 
     public function get($cpf)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, rg, sexo FROM paciente WHERE cpf=:cpf');
+       
+        $query = $this->conexao->prepare('SELECT nome, nascimento, bairro, sexo, rg, cpf, telefone  FROM pessoa WHERE cpf=:cpf');
         $query->bindParam(':cpf',$cpf);
         $query->execute();
         $pacientes = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $pacientes[0];
-    }
-    public function buscar($filtro){
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
 
+    }
+
+    
+    public function buscar($filtro){
+       
         $filtro = "%".$filtro."%";
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $conexao->prepare('SELECT cpf, nome, nascimento, telefone, bairro, rg, sexo FROM paciente WHERE nome like :filtro');
+        $query = $this->conexao->prepare('SELECT nome, nascimento, bairro, sexo, rg, cpf, telefone FROM pessoa WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $pacientes = $query->fetchAll(PDO::FETCH_CLASS);

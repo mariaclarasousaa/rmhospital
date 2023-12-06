@@ -10,19 +10,9 @@ class ConfigConexaoDao {
     public $conexao;
 
     public function __construct() {
-        $this->conexao = new mysqli($this->host, $this->usuario, $this->senha, $this->bd);
-
-        if ($this->conexao->connect_error) {
-            die("Erro na conexão com o banco de dados: " . $this->conexao->connect_error);
-        }
-    }
-
-    public function query($sql) {
-        return $this->conexao->query($sql);
-    }
-
-    public function close() {
-        $this->conexao->close();
+        $this->conexao = new PDO("mysql:host=$this->host;dbname=$this->bd", $this->usuario, $this->senha);
+        $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->conexao->exec('SET NAMES "utf8"');
     }
 }
 ?>

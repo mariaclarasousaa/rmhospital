@@ -21,6 +21,7 @@ if ($acao == NULL) {
     $pacienteDao->salvar($paciente);
 
     header("Location: ?page=pacienteControle&acao=listar");
+
 } else if ($acao == "listar") {
     $pacientes = $pacienteDao->listar();
     include 'pages/listarPaciente.php';
