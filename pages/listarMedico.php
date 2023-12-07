@@ -18,11 +18,11 @@
     <tr>
         <th>NOME</th>
         <th>RG</th>
-        <th>CPF</th> 
+        <th>CPF</th>
         <th>ENDEREÇO</th>
         <th>TELEFONE</th>
         <th>CRM</th>
-                  
+
         <th class="text-center">EDITAR</th>
         <th class="text-center">EXCLUIR</th>
     </tr>
@@ -37,15 +37,16 @@
             <td><?php echo $medico->crm; ?></td>
 
             <td class="text-center">
-            <a href="?page=medicoControle&acao=get&cpf=<?php echo $medico->cpf; ?>" class="btn btn-warning">
+            <a href="?page=medicoControle&acao=get&pessoa_id=<?php echo $medico->pessoa_id; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>
                 </a>
             </td>
             <td class="text-center">
-            <a href="?page=medicoControle&acao=excluir&cpf=<?php echo $medico->cpf; ?>" class="btn btn-danger">
+            <a href="?page=medicoControle&acao=excluir&pessoa_id=<?php echo $medico->pessoa_id; ?>" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
             </td>
         </tr>
     <?php } ?>  
 </table>
+

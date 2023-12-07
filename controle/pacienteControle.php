@@ -45,9 +45,9 @@ if ($acao == NULL) {
     $pacienteDao->deletar($id);
     header("Location: ?page=pacienteControle&acao=listar");
 }else if($acao == "get"){
-    $cpf = $_GET['cpf'];
+    $cpf = $_GET['id'];
 
-   $paciente = $pacienteDao->get($cpf);
+   $paciente = $pacienteDao->get($id);
     include 'pages/pacienteForm.php';
 
 }else if($acao == "buscar"){

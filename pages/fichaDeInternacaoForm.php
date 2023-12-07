@@ -54,19 +54,21 @@
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Id</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="id" value="<?php echo $id; ?>">
-  </div>
+  </div> 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nome</label>
-    <input type="date" class="form-control" id="exampleInputEmail1" name="nome" value="<?php echo $nome; ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="nome"value="<?php echo $datadaInternaçao; ?>">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nome do Responsavel</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="nomeDoResponsavel"value="<?php echo $nomeDoResponsavel; ?>">
+    <input type="text" class="form-control" id="exampleInputEmail1" name="nomeDoResponsavel"value="<?php echo $nome; ?>">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Data da Internaçao</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="datadaInternaçao"value="<?php echo $datadaInternaçao; ?>">
+    <input type="date" class="form-control" id="exampleInputEmail1" name="datadaInternaçao" value="<?php echo $datadaInternaçao; ?>">
   </div>
+
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Justificativa da Internaçao</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="justificativadaInternaçao" value="<?php echo $justificativadaInternaçao; ?>">

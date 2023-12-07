@@ -35,7 +35,6 @@
               <li><a class="dropdown-item" href="?page=pacienteControle">Cadastro de Paciente</a></li>
               <li><a class="dropdown-item" href="?page=medicoControle">Cadastro de Médico</a></li>
               <li><a class="dropdown-item" href="?page=FichadeInternacaoControle">Ficha de Internação</a></li>
-              <li><a class="dropdown-item" href="#">Login</a></li>
               <li><a class="dropdown-item" href="?page=receitaControle">Receita</a></li>
             </ul>
           </li>

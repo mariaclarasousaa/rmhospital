@@ -33,16 +33,18 @@ if ($acao == NULL) {
     $medico->setCrm($_POST['crm']);
     $medico->setEndereco($_POST['endereco']);
     $medico->setTelefone($_POST['telefone']);
+    $medico->setPessoa_id($_POST['pessoa_id']);
     $medicoDao->atualizar($medico);
 
     header("Location: ?page=medicoControle&acao=listar");
     
 } else if ($acao == "excluir") {
-    $cpf = $_GET['cpf'];
+    $pessoa_id = $_GET['pessoa_id'];
     $medicoDao->deletar($cpf);
     header("Location: ?page=medicoControle&acao=listar");
+
 }else if($acao == "get"){
-    $cpf = $_GET['cpf'];
+    $pessoa_id = $_GET['pessoa_id'];
 
    $medico = $medicoDao->get($cpf);
     include 'pages/medicoForm.php';
