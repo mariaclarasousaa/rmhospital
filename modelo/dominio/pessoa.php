@@ -2,18 +2,22 @@
 
 class Pessoa
 {
-    private $id_pessoa;
+    private $id;
     private $nome;
-    private $mae;
+    private $endereco;
     private $sexo;
     private $nascimento;
     private $cpf;
-    private $numero;
     private $bairro;
     private $cep;
     private $telefone;
     private $cidade;
     private $rg;
+    private $nomeDoResponsavel;
+    private $medico;
+    private $datadaInternaçao;
+    private $justificativadaInternaçao;
+    private $crm;
 
 
     public function getcpf()
@@ -35,9 +39,9 @@ class Pessoa
     /**
      * Get the value of id
      */
-    public function getId_pessoa()
+    public function getId($id)
     {
-        return $this->id_pessoa;
+        return $this->id;
     }
 
     /**
@@ -45,9 +49,9 @@ class Pessoa
      *
      * @return  self
      */
-    public function setId_pessoa($id_pessoa)
+    public function setId($id)
     {
-        $this->id_pessoa = $id_pessoa;
+        $this->id = $id;
 
         return $this;
     }
@@ -73,21 +77,41 @@ class Pessoa
     }
 
     /**
-     * Get the value of mae
+     * Get the value of endereco
      */
-    public function getMae()
+    public function getEndereco($endereco)
     {
-        return $this->mae;
+        return $this->endereco;
     }
 
     /**
-     * Set the value of mae
+     * Set the value of endereco
      *
      * @return  self
      */
-    public function setMae($mae)
+    public function setEndereco($endereco)
     {
-        $this->mae = $mae;
+        $this->endereco = $endereco;
+
+        return $this;
+    }
+
+        /**
+     * Get the value of endereco
+     */
+    public function getCrm()
+    {
+        return $this->crm;
+    }
+
+    /**
+     * Set the value of endereco
+     *
+     * @return  self
+     */
+    public function setCrm($crm)
+    {
+        $this->crm = $crm;
 
         return $this;
     }

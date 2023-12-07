@@ -17,6 +17,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+
       <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -33,7 +34,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="?page=pacienteControle">Cadastro de Paciente</a></li>
               <li><a class="dropdown-item" href="?page=medicoControle">Cadastro de Médico</a></li>
-              <li><a class="dropdown-item" href="#">Ficha de Internação</a></li>
+              <li><a class="dropdown-item" href="?page=FichadeInternacaoControle">Ficha de Internação</a></li>
               <li><a class="dropdown-item" href="#">Login</a></li>
               <li><a class="dropdown-item" href="?page=receitaControle">Receita</a></li>
             </ul>

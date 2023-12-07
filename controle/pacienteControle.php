@@ -35,13 +35,14 @@ if ($acao == NULL) {
     $paciente->setSexo($_POST['sexo']);
     $paciente->setBairro($_POST['bairro']);
     $paciente->setTelefone($_POST['telefone']);
+    $paciente->setId($_POST['id']);
     $pacienteDao->atualizar($paciente);
 
     header("Location: ?page=pacienteControle&acao=listar");
     
 } else if ($acao == "excluir") {
-    $cpf = $_GET['cpf'];
-    $pacienteDao->deletar($cpf);
+    $id = $_GET['id'];
+    $pacienteDao->deletar($id);
     header("Location: ?page=pacienteControle&acao=listar");
 }else if($acao == "get"){
     $cpf = $_GET['cpf'];

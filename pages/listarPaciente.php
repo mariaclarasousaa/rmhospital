@@ -18,11 +18,12 @@
     <tr>
         <th>NOME</th>
         <th>NASCIMENTO</th>
-        <th>SEXO</th>
+        <th>TELEFONE</th>  
         <th>RG</th>
         <th>CPF</th>    
-        <th>TELEFONE</th>
-        <th>BAIRRO</th>                  
+        <th>BAIRRO</th>
+        <th>SEXO</th>
+                 
         <th class="text-center">EDITAR</th>
         <th class="text-center">EXCLUIR</th>
     </tr>
@@ -31,18 +32,19 @@
         <tr>
             <td><?php echo $paciente->nome; ?></td>
             <td><?php echo date('d/m/Y', strtotime($paciente->nascimento)); ?></td>
-            <td><?php echo $paciente->sexo; ?></td>
+            <td><?php echo $paciente->telefone; ?></td>
             <td><?php echo $paciente->rg; ?></td>
             <td><?php echo $paciente->cpf; ?></td>
-            <td><?php echo $paciente->telefone; ?></td>
             <td><?php echo $paciente->bairro; ?></td>
+            <td><?php echo $paciente->sexo; ?></td>
+
             <td class="text-center">
-            <a href="?page=pacienteControle&acao=get&cpf=<?php echo $paciente->cpf; ?>" class="btn btn-warning">
+            <a href="?page=pacienteControle&acao=get&id=<?php echo $paciente->id; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>
                 </a>
             </td>
             <td class="text-center">
-            <a href="?page=pacienteControle&acao=excluir&cpf=<?php echo $paciente->cpf; ?>" class="btn btn-danger">
+            <a href="?page=pacienteControle&acao=excluir&id=<?php echo $paciente->id; ?>" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
             </td>

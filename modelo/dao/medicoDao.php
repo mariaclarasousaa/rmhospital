@@ -25,8 +25,8 @@ require_once 'modelo/dao/configConexaoDao.php';
 
         $id_pessoa = $this->conexao->lastInsertId();
 
-        $query = $this->conexao->prepare('INSERT INTO professor(id_pessoa, crm) VALUES (:id_pessoa, :crm)');
-        $query->bindParam(':id', $id_pessoa);
+        $query = $this->conexao->prepare('INSERT INTO medico(pessoa_id, crm) VALUES (:pessoa_id, :crm)');
+        $query->bindParam(':pessoa_id', $pessoa_id);
         $query->bindParam(':crm', $crm);
 
         $query->execute();

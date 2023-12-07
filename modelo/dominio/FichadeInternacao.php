@@ -2,7 +2,7 @@
 
 class FichadeInternacao{
     private $id;
-    private $paciente;
+    private $nome;
     private $nomeDoResponsavel;
     private $medico;
     private $datadaInternaçao;
@@ -15,11 +15,11 @@ class FichadeInternacao{
         return $this->id;
     }
 
-    public function setpaciente($paciente){
-        $this->paciente=$paciente;
+    public function setnome($nome){
+        $this->nome=$nome;
     }
-    public function getpaciente(){
-        return $this->paciente;
+    public function getnome(){
+        return $this->nome;
     }
     
     public function setnomeDoResponsavel($nomeDoResponsavel){
