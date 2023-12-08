@@ -2,6 +2,7 @@
 
 class Medico{
 
+    public $id;
     private $nome;
     private $telefone;
     private $rg;

@@ -3,7 +3,7 @@
 
   <?php if(isset($medico)){
        ?>
-       <input type="hidden" name="pessoa_id" value="<?php echo $medico->pessoa_id; ?>"/>
+       <input type="hidden" name="id" value="<?php echo $medico->id; ?>"/>
        <?php
        $nome = $medico->nome;
        $rg = $medico->rg;

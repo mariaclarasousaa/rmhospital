@@ -1,6 +1,5 @@
-
 <h3 style="margin:15px;">Medico</h3>
-<hr />
+<hr/>
 <div class="row" style="padding:15px;">
     <div class="col-5">
         <a class="btn btn-info" href="?page=medicoControle"> <i class="bi bi-file"></i><br /> Novo</a>
@@ -37,12 +36,12 @@
             <td><?php echo $medico->crm; ?></td>
 
             <td class="text-center">
-            <a href="?page=medicoControle&acao=get&pessoa_id=<?php echo $medico->pessoa_id; ?>" class="btn btn-warning">
+            <a href="?page=medicoControle&acao=get&id=<?php echo $medico->id; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>
                 </a>
             </td>
             <td class="text-center">
-            <a href="?page=medicoControle&acao=excluir&pessoa_id=<?php echo $medico->pessoa_id; ?>" class="btn btn-danger">
+            <a href="?page=medicoControle&acao=excluir&id=<?php echo $medico->id; ?>" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
             </td>

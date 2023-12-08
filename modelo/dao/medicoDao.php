@@ -19,15 +19,15 @@ require_once 'modelo/dao/configConexaoDao.php';
         $endereco = $medico->getEndereco();
 
 
-        $query = $this->conexao->prepare('INSERT INTO pessoa(cpf, nome, telefone, rg, endereco) VALUES (:cpf, :nome, :telefone)');
+        $query = $this->conexao->prepare('INSERT INTO pessoa(cpf, nome, telefone, rg, endereco) VALUES (:cpf, :nome, :telefone, :rg, :endereco)');
         $query->bindParam(':cpf', $cpf);
         $query->bindParam(':nome', $nome);
         $query->bindParam(':telefone', $telefone);
         $query->bindParam(':rg', $rg);
-        $query->bindParam(':endereco', $endereco);
-
+        $query->bindParam(':endereco', $endereco); 
+        
         $query->execute();
-
+        
         $id_pessoa = $this->conexao->lastInsertId();
 
         $query = $this->conexao->prepare('INSERT INTO medico(pessoa_id, crm) VALUES (:pessoa_id, :crm)');
@@ -48,7 +48,7 @@ require_once 'modelo/dao/configConexaoDao.php';
     public function listar()
     {
         
-        $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg,  p.endereco, m.crm FROM pessoa p inner join medico m on p.id = m.pessoa_id');
+        $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg,  p.endereco, m.crm, p.id FROM pessoa p inner join medico m on p.id = m.pessoa_id');
         $query->execute();
         $medicos = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -56,43 +56,53 @@ require_once 'modelo/dao/configConexaoDao.php';
 
     }
 
-
-
-    public function deletar($id)
+    public function excluir($id)
     {
-      
+
         $query = $this->conexao->prepare('delete from pessoa where id=:id');
-        $query->bindParam(':id', $id);
+        $query->bindParam(':id', $pessoa_id);
         $query->execute();
     }
+
 
     public function atualizar($medico)
     {
         $nome = $medico->getNome();
         $cpf = $medico->getCpf();
         $rg = $medico->getRg();
+        $endereco = $medico->getEndereco();
+        
     
-        $query = $this->conexao->prepare('update pessoa set nome=:nome, cpf=:cpf, rg=:rg where id=:id');
+        $query = $this->conexao->prepare('update pessoa set nome=:nome, cpf=:cpf, rg=:rg, endereco=:endereco where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':cpf', $cpf);
-        $query->bindParam(':rg', $rg); // Adicionei esta linha para corrigir o bindParam do rg
+        $query->bindParam(':rg', $rg);
+        $query->bindParam(':endereco', $endereco);
+        $query->bindParam(':id', $medico->id);
         $query->execute();
+
     }
     
 
-    public function get($id)
-    {
-       
-        $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco, crm  FROM pessoa WHERE id=:id');
-        $query->bindParam(':id',$id);
-        $query->execute();
-        $medicos = $query->fetchAll(PDO::FETCH_CLASS);
 
+public function get($id)
+{
+    $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg, p.endereco, m.crm, p.id FROM pessoa p INNER JOIN medico m ON p.id = m.pessoa_id WHERE p.id=:id');
+    $query->bindParam(':id', $id);
+    $query->execute();
+    $medicos = $query->fetchAll(PDO::FETCH_CLASS);
+
+    if (!empty($medicos)) {
         return $medicos[0];
-
+    } else {
+        // Lidere com a situação em que nenhum resultado é encontrado.
+        return null;
     }
+}
 
-    
+
+
+
     public function buscar($filtro){
        
         $filtro = "%".$filtro."%";
@@ -105,3 +115,5 @@ require_once 'modelo/dao/configConexaoDao.php';
         return $medicos;
     }
 }
+
+

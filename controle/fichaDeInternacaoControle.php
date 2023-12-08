@@ -14,7 +14,7 @@ if ($acao == NULL) {
     $fichaDeInternacao->setNome($_POST['nome']);
     $fichaDeInternacao->setId($_POST['id']);
     $fichaDeInternacao->setNomeDoResponsavel($_POST['nomeDoResponsavel']);
-    $fichaDeInternacao->setMedico($_POST['medico']);
+    $fichaDeInternacao->setMedico(isset($_POST['medico']) ? $_POST['medico'] : '');
     $fichaDeInternacao->setDatadaInternaçao($_POST['datadaInternaçao']);
     $fichaDeInternacao->setJustificativadaInternaçao($_POST['justificativadaInternaçao']);
 

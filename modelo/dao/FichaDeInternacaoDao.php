@@ -23,7 +23,7 @@ require_once 'modelo/dao/configConexaoDao.php';
 
         $id = $this->conexao->lastInsertId();
 
-        $query = $this->conexao->prepare('INSERT INTO professor(id, nome) VALUES (:id, :nome)');
+        $query = $this->conexao->prepare('INSERT INTO pessoa(id, nome) VALUES (:id, :nome)');
         $query->bindParam(':id', $id);
         $query->bindParam(':nome', $nome);
 

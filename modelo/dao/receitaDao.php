@@ -7,17 +7,14 @@ class ReceitaDao extends configConexaoDao
 
     public function salvar($receita)
     {
-        //  try {
-
-       
-$nome = $paciente->getNome();
-$cpf = $paciente->getCpf();
-$telefone = $paciente->getTelefone();
-$rg = $paciente->getRg();
-$bairro = $paciente->getBairro();
-$nascimento = $paciente->getNascimento();
-$sexo = $paciente->getSexo();
-
+            $nome = $receita->getNome();
+            $cpf = $receita->getCpf();
+            $telefone = $receita->getTelefone();
+            $rg = $receita->getRg();
+            $bairro = $receita->getBairro();
+            $nascimento = $receita->getNascimento();
+            $sexo = $receita->getSexo();
+        
 
 $query = $this->conexao->prepare('INSERT INTO receita(id_receita, data, descricao, paciente_id, medico_id) VALUES (:id_receita, :data, :descricao, :id_paciente, :id_medico)');
 
@@ -51,7 +48,7 @@ return $receitas;
 }
 
 
-public function deletar($cpf)
+public function excluir($cpf)
 {
 
 $query = $this->conexao->prepare('delete from receita where id_receita=:id_receita');

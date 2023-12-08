@@ -21,13 +21,17 @@
       <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">MEDCARE</a>
+            <a class="nav-link active" aria-current="page" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor"
+             class="bi bi-activity" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 
+             0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>     </svg> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="?page=pacienteControle&acao=listar">Listar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Menu</a>
+           
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Mais</a>
@@ -47,7 +51,7 @@
   <div class="container">
         <?php
         if (!empty($_GET['page'])) {
-            $controle = $_GET['page']; //pacienteControle
+            $controle = $_GET['page']; 
 
             include 'controle/' . $controle . '.php';
         }

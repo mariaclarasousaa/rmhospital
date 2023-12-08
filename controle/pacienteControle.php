@@ -44,6 +44,7 @@ if ($acao == NULL) {
     $id = $_GET['id'];
     $pacienteDao->deletar($id);
     header("Location: ?page=pacienteControle&acao=listar");
+    
 }else if($acao == "get"){
     $cpf = $_GET['id'];
 
