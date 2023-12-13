@@ -9,26 +9,23 @@ require_once 'modelo/dao/configConexaoDao.php';
             public function salvar($fichaDeInternacao)
             {
                 //  try {
-       
+                    $nome = $fichaDeInternacao->getNome();
+                    $id = $fichaDeInternacao->getId();
+            
+            
+            
+            
+                    $query = $this->conexao->prepare('INSERT INTO pessoa(nome) VALUES (:nome)');
+                    $query->bindParam(':nome', $nome);
+                    $query->execute();
+                               
+                    $id = $this->conexao->lastInsertId();
+                               
+                    $query = $this->conexao->prepare('UPDATE pessoa SET id = :id WHERE id IS NULL');
+                    $query->bindParam(':id', $id);
+                    $query->execute();
 
-        $nome = $fichaDeInternacao->getNome();
-        $id = $fichaDeInternacao->getId();
-
-
-        $query = $this->conexao->prepare('INSERT INTO pessoa(nome, id) VALUES (:nome, :id)');
-        $query->bindParam(':nome', $nome);
-        $query->bindParam(':id', $id);
-
-        $query->execute();
-
-        $id = $this->conexao->lastInsertId();
-
-        $query = $this->conexao->prepare('INSERT INTO pessoa(id, nome) VALUES (:id, :nome)');
-        $query->bindParam(':id', $id);
-        $query->bindParam(':nome', $nome);
-
-        $query->execute();
-
+        
        //    $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //  $this->conexao->exec('SET NAMES "utf8"');
 
@@ -38,18 +35,17 @@ require_once 'modelo/dao/configConexaoDao.php';
         // }
     }
 
+
     public function listar()
     {
-        
-        $query = $this->conexao->prepare('SELECT nome, nomeDoResponsavel, medico,  datadaInternaçao, justificativadaInternaçao FROM pessoa');
+       
+        $query = $this->conexao->prepare('SELECT nome, id FROM pessoa');
         $query->execute();
-        $FichadeInternacaos = $query->fetchAll(PDO::FETCH_CLASS);
+        $fichaDeInternacaos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $FichadeInternacaos;
+        return $fichaDeInternacaos;
 
     }
-
-
 
     public function deletar($id)
     {
@@ -63,15 +59,13 @@ require_once 'modelo/dao/configConexaoDao.php';
     {
         $nome = $FichadeInternacao->getNome();
         $id = $FichadeInternacao->getId();
-        $nomeDoResponsavel = $FichadeInternacao->getNomeDoResponsavel();
         $medico = $FichadeInternacao->getMedico();
         $datadaInternaçao = $FichadeInternacao->getDatadaInternaçao();
         $justificativadaInternaçao = $FichadeInternacao->getJustificativadaInternaçao();
     
-        $query = $this->conexao->prepare('update pessoa set nome=:nome, nomeDoResponsavel=:nomeDoResponsavel, medico=:medico,
+        $query = $this->conexao->prepare('update pessoa set nome=:nome, medico=:medico,
         datadaInternaçao=:datadaInternaçao, justificativadaInternaçao=:justificativadaInternaçao where id=:id');
         $query->bindParam(':nome', $nome);
-        $query->bindParam(':nomeDoResponsavel', $nomeDoResponsavel);
         $query->bindParam(':datadaInternaçao', $datadaInternaçao);
         $query->bindParam(':justificativadaInternaçao', $justificativadaInternaçao);
         $query->bindParam(':medico', $medico);
@@ -84,7 +78,7 @@ require_once 'modelo/dao/configConexaoDao.php';
     public function get($id)
     {
        
-        $query = $this->conexao->prepare('SELECT nome, nomeDoResponsavel, medico,  datadaInternaçao, justificativadaInternaçao FROM pessoa WHERE id=:id');
+        $query = $this->conexao->prepare('SELECT nome, medico,  datadaInternaçao, justificativadaInternaçao FROM pessoa WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $FichadeInternacaos = $query->fetchAll(PDO::FETCH_CLASS);
@@ -98,7 +92,7 @@ require_once 'modelo/dao/configConexaoDao.php';
        
         $filtro = "%".$filtro."%";
 
-        $query = $this->conexao->prepare('SELECT nome, nomeDoResponsavel, medico,  datadaInternaçao, justificativadaInternaçao FROM pessoa WHERE nome like :filtro');
+        $query = $this->conexao->prepare('SELECT nome, medico,  datadaInternaçao, justificativadaInternaçao FROM pessoa WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $FichadeInternacaos = $query->fetchAll(PDO::FETCH_CLASS);

@@ -30,8 +30,8 @@ require_once 'modelo/dao/configConexaoDao.php';
         
         $id_pessoa = $this->conexao->lastInsertId();
 
-        $query = $this->conexao->prepare('INSERT INTO medico(pessoa_id, crm) VALUES (:pessoa_id, :crm)');
-        $query->bindParam(':pessoa_id', $id_pessoa);
+        $query = $this->conexao->prepare('INSERT INTO medico(id, crm) VALUES (:id, :crm)');
+        $query->bindParam(':id', $id_pessoa);
         $query->bindParam(':crm', $crm);
 
         $query->execute();
@@ -48,7 +48,7 @@ require_once 'modelo/dao/configConexaoDao.php';
     public function listar()
     {
         
-        $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg,  p.endereco, m.crm, p.id FROM pessoa p inner join medico m on p.id = m.pessoa_id');
+        $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg,  p.endereco, m.crm, p.id FROM pessoa p inner join medico m on p.id = m.id');
         $query->execute();
         $medicos = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -56,11 +56,12 @@ require_once 'modelo/dao/configConexaoDao.php';
 
     }
 
-    public function excluir($id)
-    {
 
+    public function deletar($id)
+    {
+      
         $query = $this->conexao->prepare('delete from pessoa where id=:id');
-        $query->bindParam(':id', $pessoa_id);
+        $query->bindParam(':id', $id);
         $query->execute();
     }
 
@@ -81,13 +82,15 @@ require_once 'modelo/dao/configConexaoDao.php';
         $query->bindParam(':id', $medico->id);
         $query->execute();
 
+      
+
     }
     
 
 
 public function get($id)
 {
-    $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg, p.endereco, m.crm, p.id FROM pessoa p INNER JOIN medico m ON p.id = m.pessoa_id WHERE p.id=:id');
+    $query = $this->conexao->prepare('SELECT p.cpf, p.nome, p.telefone, p.rg, p.endereco, m.crm, p.id FROM pessoa p INNER JOIN medico m ON p.id = m.id WHERE p.id=:id');
     $query->bindParam(':id', $id);
     $query->execute();
     $medicos = $query->fetchAll(PDO::FETCH_CLASS);
@@ -101,19 +104,16 @@ public function get($id)
 }
 
 
-
-
-    public function buscar($filtro){
+public function buscar($filtro){
        
-        $filtro = "%".$filtro."%";
+    $filtro = "%".$filtro."%";
 
-        $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco, crm FROM pessoa WHERE nome like :filtro');
-        $query->bindParam(':filtro',$filtro);
-        $query->execute();
-        $medicos = $query->fetchAll(PDO::FETCH_CLASS);
+    $query = $this->conexao->prepare('SELECT cpf, nome, telefone, rg,  endereco FROM pessoa WHERE nome like :filtro');
+    $query->bindParam(':filtro',$filtro);
+    $query->execute();
+    $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $medicos;
-    }
+    return $alunos;
 }
-
+}
 

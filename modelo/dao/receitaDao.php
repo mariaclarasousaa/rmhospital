@@ -7,18 +7,10 @@ class ReceitaDao extends configConexaoDao
 
     public function salvar($receita)
     {
-            $nome = $receita->getNome();
-            $cpf = $receita->getCpf();
-            $telefone = $receita->getTelefone();
-            $rg = $receita->getRg();
-            $bairro = $receita->getBairro();
-            $nascimento = $receita->getNascimento();
-            $sexo = $receita->getSexo();
-        
 
-$query = $this->conexao->prepare('INSERT INTO receita(id_receita, data, descricao, paciente_id, medico_id) VALUES (:id_receita, :data, :descricao, :id_paciente, :id_medico)');
+$query = $this->conexao->prepare('INSERT INTO receita(id, data, descricao, paciente_id, medico_id) VALUES (:id, :data, :descricao, :paciente_id, :id_medico)');
 
-$query->bindParam(':id_receita', $id_receita);
+$query->bindParam(':id', $id);
 $query->bindParam(':data', $data);
 $query->bindParam(':descricao', $descricao);
 $query->bindParam(':id_paciente', $id_paciente);

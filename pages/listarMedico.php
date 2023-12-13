@@ -27,25 +27,27 @@
     </tr>
 
     <?php foreach ($medicos as $medico) { ?>
-        <tr>
-            <td><?php echo $medico->nome; ?></td>
-            <td><?php echo $medico->rg; ?></td>
-            <td><?php echo $medico->cpf; ?></td>
-            <td><?php echo $medico->endereco; ?></td>
-            <td><?php echo $medico->telefone; ?></td>
-            <td><?php echo $medico->crm; ?></td>
+    <tr>
+        <td><?php echo isset($medico->nome) ? $medico->nome : ''; ?></td>
+        <td><?php echo isset($medico->rg) ? $medico->rg : ''; ?></td>
+        <td><?php echo isset($medico->cpf) ? $medico->cpf : ''; ?></td>
+        <td><?php echo isset($medico->endereco) ? $medico->endereco : ''; ?></td>
+        <td><?php echo isset($medico->telefone) ? $medico->telefone : ''; ?></td>
+        <td><?php echo isset($medico->crm) ? $medico->crm : ''; ?></td>
 
-            <td class="text-center">
+        <td class="text-center">
             <a href="?page=medicoControle&acao=get&id=<?php echo $medico->id; ?>" class="btn btn-warning">
-                    <i class="bi bi-pencil"></i>
-                </a>
-            </td>
-            <td class="text-center">
+                <i class="bi bi-pencil"></i>
+            </a>
+        </td>
+        <td class="text-center">
             <a href="?page=medicoControle&acao=excluir&id=<?php echo $medico->id; ?>" class="btn btn-danger">
-                    <i class="bi bi-trash"></i>
-                </a>
-            </td>
-        </tr>
+                <i class="bi bi-trash"></i>
+            </a>
+        </td>
+    </tr>
     <?php } ?>  
 </table>
+
+
 

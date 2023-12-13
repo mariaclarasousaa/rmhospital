@@ -42,7 +42,7 @@ if ($acao == NULL) {
     
 } else if ($acao == "excluir") {
     $id = $_GET['id'];
-    $pacienteDao->deletar($id);
+    $pacienteDao->excluir($id);
     header("Location: ?page=pacienteControle&acao=listar");
     
 }else if($acao == "get"){

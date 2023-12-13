@@ -13,11 +13,7 @@ class Pessoa
     private $telefone;
     private $cidade;
     private $rg;
-    private $nomeDoResponsavel;
-    private $medico;
-    private $datadaInternaçao;
-    private $justificativadaInternaçao;
-    private $crm;
+    
 
 
     public function getcpf()

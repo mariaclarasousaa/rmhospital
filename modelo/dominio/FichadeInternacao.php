@@ -3,7 +3,6 @@
 class FichadeInternacao{
     private $id;
     private $nome;
-    private $nomeDoResponsavel;
     private $medico;
     private $datadaInternaçao;
     private $justificativadaInternaçao;

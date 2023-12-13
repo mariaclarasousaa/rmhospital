@@ -38,9 +38,9 @@ if ($acao == NULL) {
 
     header("Location: ?page=medicoControle&acao=listar");
     
-} else if ($acao == "excluir") {
+} else if ($acao == "deletar") {
     $id = $_GET['id'];
-    $medicoDao->excluir($id);
+    $medicoDao->deletar($id);
     header("Location: ?page=medicoControle&acao=listar");
 
 }else if($acao == "get"){
