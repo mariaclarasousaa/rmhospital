@@ -8,12 +8,13 @@ require_once 'modelo/dao/configConexaoDao.php';
         {
             public function salvar($fichaDeInternacao)
             {
-                //  try {
+                  try {
                     $nome = $fichaDeInternacao->getNome();
                     $id = $fichaDeInternacao->getId();
-            
-            
-            
+
+                    $this->conexao->beginTransaction();
+
+
             
                     $query = $this->conexao->prepare('INSERT INTO pessoa(nome) VALUES (:nome)');
                     $query->bindParam(':nome', $nome);
@@ -25,14 +26,16 @@ require_once 'modelo/dao/configConexaoDao.php';
                     $query->bindParam(':id', $id);
                     $query->execute();
 
-        
-       //    $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $this->conexao->exec('SET NAMES "utf8"');
+                    $this->conexao->commit();
 
-        // } catch (Exception $e) {
-        //    print $e->getMessage();
-        //  exit();
-        // }
+
+
+        
+       } catch (Exception $e) {
+        $this->conexao->rollBack();
+            print $e->getMessage();
+       
+         }
     }
 
 

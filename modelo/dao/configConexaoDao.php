@@ -4,7 +4,7 @@ class ConfigConexaoDao {
 
     private $host = "localhost";
     private $usuario = "root";
-    private $senha = "aluno";
+    private $senha = "";
     private $bd = "mydb";
 
     public $conexao;
@@ -13,6 +13,8 @@ class ConfigConexaoDao {
         $this->conexao = new PDO("mysql:host=$this->host;dbname=$this->bd", $this->usuario, $this->senha);
         $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->conexao->exec('SET NAMES "utf8"');
+
+        
     }
 }
 ?>

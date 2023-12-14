@@ -1,7 +1,7 @@
 <h1 class="h3 mb-3 fw-normal form-title-color">Ficha de Internação</h1> 
   <form method="post" action="?page=FichadeInternacaoControle">
 
-<?php if(isset($FichadeInternacao)){
+<?php if(isset($FichaDeInternacao)){
        ?>
        <input type="hidden" name="id" value="<?php echo $receita->id; ?>"/>
        <?php

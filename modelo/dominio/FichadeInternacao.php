@@ -1,6 +1,7 @@
 <?php
 
-class FichadeInternacao{
+class FichaDeInternacao{
+
     private $id;
     private $nome;
     private $medico;

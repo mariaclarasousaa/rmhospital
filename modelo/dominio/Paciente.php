@@ -57,5 +57,6 @@ class Paciente{
     public function getbairro(){
         return $this->bairro;
     }
+    
 
 }
